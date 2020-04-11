@@ -15,8 +15,8 @@ Funcion::Funcion() {
 Funcion::Funcion(string clave, int numP, Hora hr, int numSala) {
     cveFuncion = clave;
     numPeli = numP;
-    hora.setHh(hr.getHh);
-    hora.setMm(hr.getMm);
+    hora.setHh(hr.getHh());
+    hora.setMm(hr.getMm());
     sala = numSala;
 }
 
@@ -45,8 +45,8 @@ void Funcion::setNumPeli(int num) {
 }
 
 void Funcion::setHora(Hora hr) {
-    hora.setHh(hr.getHh);
-    hora.setMm(hr.getMm);
+    hora.setHh(hr.getHh());
+    hora.setMm(hr.getMm());
 }
 
 void Funcion::setSala(int numSala) {
