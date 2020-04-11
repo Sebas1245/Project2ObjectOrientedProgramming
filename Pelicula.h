@@ -15,6 +15,7 @@ class Pelicula {
         Actor listaActores[10];
     public:
         Pelicula();
+        Pelicula(int numP, string tit, int a, int dur, string gen, int numActores, Actor lActores[10]);
         // metodos de acceso
         int getNumPeli();
         string getTitulo();

@@ -11,8 +11,13 @@ Pelicula::Pelicula() {
     duracion = 0;
     genero = "N/D";
     cantActores = 0;
-    listaActores[10] = {};
+    for(int i = 0; i < 10; i++) {
+        listaActores[i].setId(0);
+        listaActores[i].setNombre(" ");
+    }
 }
+
+
 // metodos de acceso
 int Pelicula::getNumPeli() {
     return numPeli;
@@ -66,10 +71,12 @@ Actor Pelicula::getActorFromList(int i) {
 bool Pelicula::agregarActor(Actor act) {
     // reviso las condiciones para regresar falso
     for (int i = 0; i < 10; i++ ) {
-        if(act.getNombre() == listaActores[i].getNombre()) {
+        // si tengo un actor repetido
+        if(act.getId() == listaActores[i].getId()) {
             return false;
         }
-        else if (i == 9 && listaActores[i].getNombre() != " ") {
+        // si el ultimo espacio del arreglo está ocupado
+        else if (i == 9 &&  listaActores[i].getNombre() != " ") {
             return false;
         }
     }
@@ -78,7 +85,8 @@ bool Pelicula::agregarActor(Actor act) {
         // reviso hasta llegar al primer espacio vacío en la lista
         if(listaActores[i].getNombre() != "N/D") {
             listaActores[i].setNombre(act.getNombre());
-            listaActores[i].setId(act.getId()); 
+            listaActores[i].setId(act.getId());
+            return true;
         }
     }
 }
