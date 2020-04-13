@@ -29,3 +29,8 @@ void Actor::setId(int num) {
 void Actor::setNombre(string nom) {
     nombre = nom;
 }
+
+void Actor::muestra() {
+    cout << "ID: " << id;
+    cout << "Nombre: " << nombre << endl; 
+}

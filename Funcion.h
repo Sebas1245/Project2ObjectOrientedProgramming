@@ -21,4 +21,5 @@ class Funcion {
         void setNumPeli(int num);
         void setHora(Hora);
         void setSala(int numSala);
+        void muestra();
 };

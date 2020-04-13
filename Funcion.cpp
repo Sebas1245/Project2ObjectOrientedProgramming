@@ -52,3 +52,11 @@ void Funcion::setHora(Hora hr) {
 void Funcion::setSala(int numSala) {
     sala = numSala;
 }
+
+void Funcion::muestra() {
+    cout << "Clave de Funcion: " << cveFuncion << " ";
+    cout << "Numero de pelicula: " << numPeli << " ";
+    cout << "Hora: ";
+    hora.muestra();
+    cout << "Sala: " << sala;
+}

@@ -13,4 +13,5 @@ class Hora {
         int getMm();
         void setHh(int hr);
         void setMm(int min);
+        void muestra();
 };

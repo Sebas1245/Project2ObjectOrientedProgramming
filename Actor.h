@@ -14,4 +14,5 @@ class Actor {
         string getNombre();
         void setId(int num);
         void setNombre(string nom);
+        void muestra();
 };
