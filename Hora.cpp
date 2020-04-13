@@ -35,7 +35,7 @@ void Hora::muestra() {
     string timeOfDay;
     if (hh >= 12 && hh <= 23) {
         dispHh = hh-12;
-        timeOfDay = "PM"
+        timeOfDay = "PM";
     }
     else if (hh >=0 && hh < 12){
         dispHh = hh;
