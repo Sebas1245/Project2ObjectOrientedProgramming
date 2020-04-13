@@ -81,13 +81,13 @@ bool Pelicula::agregarActor(Actor act) {
         }
     }
     // si no se ha terminado la funcion agrego el actor a la lista
-    for (int i = 0; i < 10; i++) {
+    for (int i = cantActores; i < 10; i++) {
         // reviso hasta llegar al primer espacio vacío en la lista
         if(listaActores[i].getNombre() != "N/D") {
             listaActores[i].setNombre(act.getNombre());
             listaActores[i].setId(act.getId());
+            cantActores++;
             return true;
         }
     }
 }
-
