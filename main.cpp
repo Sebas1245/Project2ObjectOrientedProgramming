@@ -110,14 +110,14 @@ int main(){
         cout << "Introduzca el numero de pelicula ";
         cin >> numPeliFun;
         cout << "Introduzca el horario en el que se presentara la pelicula" << endl;
-        cout << "Hora del dia (formato 24 hrs): "; 
+        cout << "Hora (formato 24 hrs): "; 
         cin >> hora;
         cout << "Minuto: ";
         cin >> minutos;
         // valido que el formato de hora sea correcto
         while(hora >= 24 || hora < 0 || minutos < 0 || minutos > 59) {
             cout << "Se ha introducido la hora erroneamente, intentelo de nuevo. Recuerde que se debe introducir en formato de 24 horas" << endl;
-            cout << "Hora del dia (formato 24 hrs): "; 
+            cout << "Hora (formato 24 hrs): "; 
             cin >> hora;
             cout << "Minuto: ";
             cin >> minutos;
@@ -157,7 +157,24 @@ int main(){
                 }
                 break;
             case 'C':
-                // code
+                for (int i = 0; i < numFunciones; i++) {
+                    // mostrar clave de funcion
+                    cout << "Funcion: "<< arrFunciones[i].getCveFuncion();
+                    // comparar numero de Peli para la funcion con numero de Peli para arreglo de Pelis
+                    for (int j = 0; j < 20; j++) {
+                        // cuando sean iguales desplegar titulo
+                        if(arrFunciones[i].getNumPeli() == arrPelis[j].getNumPeli()){
+                            cout << "\t Pelicula: " <<arrPelis[j].getTitulo();
+                        }
+                    }
+                    // desplegar sala 
+                    cout << "\t Sala: " << arrFunciones[i].getSala() << "\t ";
+                    // desplegar hora
+                    cout << "Horario: "; 
+                    Hora horaDesplegar;
+                    horaDesplegar = arrFunciones[i].getHora();
+                    horaDesplegar.muestra();
+                }
                 break;
             case 'D':
                 // code
