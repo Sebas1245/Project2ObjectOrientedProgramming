@@ -34,6 +34,28 @@ char menu(){
     return resp;
 }
 
+// pedirValidarHora
+// Pide los valores de horas y minutos en formato de 24 horas y valida que sean correctos
+// Recibe: hr y min como parametros por referencia
+// Regresa: hr y min como parametros por referencia
+void pedirValidarHora(int &hr, int &min) {
+    int hora, minutos;
+    cout << "Hora (formato 24 hrs): "; 
+    cin >> hora;
+    cout << "Minuto: ";
+    cin >> minutos;
+    // valido que el formato de hora sea correcto
+    while(hora >= 24 || hora < 0 || minutos < 0 || minutos > 59) {
+        cout << "Se ha introducido la hora erroneamente, intentelo de nuevo. Recuerde que se debe introducir en formato de 24 horas" << endl;
+        cout << "Hora (formato 24 hrs): "; 
+        cin >> hora;
+        cout << "Minuto: ";
+        cin >> minutos;
+    }
+    hr = hora;
+    min = minutos;
+}
+
 int main(){
     // ITEM 1
     // declaro los arreglos de objetos de mis clases
@@ -110,18 +132,7 @@ int main(){
         cout << "Introduzca el numero de pelicula ";
         cin >> numPeliFun;
         cout << "Introduzca el horario en el que se presentara la pelicula" << endl;
-        cout << "Hora (formato 24 hrs): "; 
-        cin >> hora;
-        cout << "Minuto: ";
-        cin >> minutos;
-        // valido que el formato de hora sea correcto
-        while(hora >= 24 || hora < 0 || minutos < 0 || minutos > 59) {
-            cout << "Se ha introducido la hora erroneamente, intentelo de nuevo. Recuerde que se debe introducir en formato de 24 horas" << endl;
-            cout << "Hora (formato 24 hrs): "; 
-            cin >> hora;
-            cout << "Minuto: ";
-            cin >> minutos;
-        }
+        pedirValidarHora(hora,minutos);
         cout << "Introduzca la sala donde se presentara la pelicula ";
         cin >> sala;
         // establezco los valores para el objeto Hora que usare para establecer el valor del objeto Funcion
@@ -143,7 +154,10 @@ int main(){
             case 'A':
                 cout << "Los actores en la lista son: " << endl;
                 for (int i = 0; i < 20; i++) {
-                    arrActores[i].muestra();
+                    if(arrActores[i].getId() != 0) {
+                        cout << i+1 << ")";
+                        arrActores[i].muestra();
+                    }
                 }
                 break;
             case 'B':
@@ -177,7 +191,15 @@ int main(){
                 }
                 break;
             case 'D':
-                // code
+                cout << "Introduzca la hora";
+                int horaCasoD, minCasoD;
+                pedirValidarHora(horaCasoD, minCasoD);
+                for(int i = 0; i < 20; i++) {
+                    // si la hora y los minutos son iguales mostrarlo todo
+                    if (horaCasoD == arrFunciones[i].getHora().getHh() && minCasoD == arrFunciones[i].getHora().getMm()) {
+                        arrFunciones[i].muestra();
+                    }
+                }
                 break;
             case 'E':
                 // code
