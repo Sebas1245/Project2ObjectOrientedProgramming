@@ -91,3 +91,15 @@ bool Pelicula::agregarActor(Actor act) {
         }
     }
 }
+
+void Pelicula::muestra() {
+    cout << "Titulo: " << titulo << " ";
+    cout << "\t Anio: " << anio << " ";
+    cout << "\t Duracion: " << duracion << " ";
+    cout << "\t Genero: " << genero << endl;
+    cout << "\t Reparto: ";
+    for (int i = 0; i < 10; i++) {
+        cout << listaActores[i].getNombre() << " ";
+    }
+    cout << endl;
+}

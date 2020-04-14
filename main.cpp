@@ -137,33 +137,42 @@ int main(){
     // ITEM 5
     // menu 
     char respMenu;
-    respMenu = menu();
-    switch (respMenu) {
-    case 'A':
-        cout << "Los actores en la lista son: " << endl;
-        for (int i = 0; i < 20; i++) {
-            arrActores[i].muestra();
+    do {
+        respMenu = menu();
+        switch (respMenu) {
+            case 'A':
+                cout << "Los actores en la lista son: " << endl;
+                for (int i = 0; i < 20; i++) {
+                    arrActores[i].muestra();
+                }
+                break;
+            case 'B':
+                cout << "Las peliculas en la lista son: " << endl;
+                for (int i = 0; i < 20; i++) {
+                    // if para saber que el elemento del arreglo no es un objeto sin información
+                    if(arrPelis[i].getTitulo() != "N/D") {
+                        cout << i+1 << ") ";
+                        arrPelis[i].muestra();
+                    }
+                }
+                break;
+            case 'C':
+                // code
+                break;
+            case 'D':
+                // code
+                break;
+            case 'E':
+                // code
+                break;
+            case 'F':
+                // code
+                break;
+            default:
+                cout << "La sesion ha terminado, gracias. " << endl;
+                break;
         }
-        break;
-    case 'B':
-        // code
-        break;
-    case 'C':
-        // code
-        break;
-    case 'D':
-        // code
-        break;
-    case 'E':
-        // code
-        break;
-    case 'F':
-        // code
-        break;
-    default:
-        cout << "La sesion ha terminado, gracias. " << endl;
-        break;
-    }
-
+    } while(respMenu != 'G');
+    
     return 0;
 }

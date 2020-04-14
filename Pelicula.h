@@ -32,4 +32,5 @@ class Pelicula {
         // metodos especiales 
         Actor getActorFromList(int index);
         bool agregarActor(Actor);
+        void muestra();
 };
