@@ -6,6 +6,34 @@
 
 using namespace std;
 
+// menu
+// Despliega el menu al Usuario y obtiene la opción del menú que se desea ejecutar
+// No recibe ningun parametro
+// Regresa variable tipo char, siendo este el caracter de la opcion elegida por el usuario
+char menu(){
+    char resp;
+    bool respCorrecta;
+    do {
+        cout << "Eliga una opcion introduciendo una de las letras mostradas" << endl;
+        cout << "A. Consultar actores en la lista " << endl;
+        cout << "B. Consultar películas en la lista " << endl;
+        cout << "C. Consultar todas las funciones disponibles " << endl;
+        cout << "D. Consultar las funciones por hora " << endl;
+        cout << "E. Consultar por clave de funcion " << endl;
+        cout << "F. Consultar participaciones de un actor en peliculas " << endl;
+        cout << "G. Terminar " << endl;
+        cin >> resp;
+        resp = toupper(resp);
+        if(resp == 'A' || resp == 'B' || resp == 'C' || resp == 'D' || resp == 'E' || resp =='F' || resp == 'G') {
+            respCorrecta = true;
+        }
+        else {
+            respCorrecta = false; 
+        }      
+    } while(respCorrecta == false);
+    return resp;
+}
+
 int main(){
     // ITEM 1
     // declaro los arreglos de objetos de mis clases
@@ -78,10 +106,11 @@ int main(){
     for (int i = 0; i < numFunciones; i++) {
         cout << "Introduzca la clave de funcion "; 
         cin >> cveFun;
+        cin.ignore();
         cout << "Introduzca el numero de pelicula ";
         cin >> numPeliFun;
         cout << "Introduzca el horario en el que se presentara la pelicula" << endl;
-        cout << "Hora del dia (formato 24 hrs):"; 
+        cout << "Hora del dia (formato 24 hrs): "; 
         cin >> hora;
         cout << "Minuto: ";
         cin >> minutos;
@@ -104,5 +133,11 @@ int main(){
         arrFunciones[i].setHora(horaPeli);
         arrFunciones[i].setSala(sala);
     }
+
+    // ITEM 5
+    // menu 
+    char respMenu;
+    respMenu = menu();
+
     return 0;
 }
