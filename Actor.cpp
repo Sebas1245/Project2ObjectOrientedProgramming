@@ -32,5 +32,5 @@ void Actor::setNombre(string nom) {
 
 void Actor::muestra() {
     cout << "ID: " << id;
-    cout << "Nombre: " << nombre << endl; 
+    cout << "\t Nombre: " << nombre << endl; 
 }

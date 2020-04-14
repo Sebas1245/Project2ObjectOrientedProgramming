@@ -138,6 +138,32 @@ int main(){
     // menu 
     char respMenu;
     respMenu = menu();
+    switch (respMenu) {
+    case 'A':
+        cout << "Los actores en la lista son: " << endl;
+        for (int i = 0; i < 20; i++) {
+            arrActores[i].muestra();
+        }
+        break;
+    case 'B':
+        // code
+        break;
+    case 'C':
+        // code
+        break;
+    case 'D':
+        // code
+        break;
+    case 'E':
+        // code
+        break;
+    case 'F':
+        // code
+        break;
+    default:
+        cout << "La sesion ha terminado, gracias. " << endl;
+        break;
+    }
 
     return 0;
 }
