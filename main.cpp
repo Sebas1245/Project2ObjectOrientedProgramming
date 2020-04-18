@@ -152,57 +152,99 @@ int main(){
         respMenu = menu();
         switch (respMenu) {
             case 'A':
-                cout << "Los actores en la lista son: " << endl;
-                for (int i = 0; i < 20; i++) {
-                    if(arrActores[i].getId() != 0) {
-                        cout << i+1 << ")";
-                        arrActores[i].muestra();
+                {
+                    cout << "Los actores en la lista son: " << endl;
+                    for (int i = 0; i < 20; i++) {
+                        if(arrActores[i].getId() != 0) {
+                            cout << i+1 << ")";
+                            arrActores[i].muestra();
+                        }
                     }
                 }
                 break;
             case 'B':
-                cout << "Las peliculas en la lista son: " << endl;
-                for (int i = 0; i < 20; i++) {
-                    // if para saber que el elemento del arreglo no es un objeto sin información
-                    if(arrPelis[i].getTitulo() != "N/D") {
-                        cout << i+1 << ") ";
-                        arrPelis[i].muestra();
+                {
+                    cout << "Las peliculas en la lista son: " << endl;
+                    for (int i = 0; i < 20; i++) {
+                        // if para saber que el elemento del arreglo no es un objeto sin información
+                        if(arrPelis[i].getTitulo() != "N/D") {
+                            cout << i+1 << ") ";
+                            arrPelis[i].muestra();
+                        }
                     }
                 }
                 break;
             case 'C':
-                for (int i = 0; i < numFunciones; i++) {
-                    // mostrar clave de funcion
-                    cout << "Funcion: "<< arrFunciones[i].getCveFuncion();
-                    // comparar numero de Peli para la funcion con numero de Peli para arreglo de Pelis
-                    for (int j = 0; j < 20; j++) {
-                        // cuando sean iguales desplegar titulo
-                        if(arrFunciones[i].getNumPeli() == arrPelis[j].getNumPeli()){
-                            cout << "\t Pelicula: " <<arrPelis[j].getTitulo();
+                {
+                    for (int i = 0; i < numFunciones; i++) {
+                        // mostrar clave de funcion
+                        cout << "Funcion: "<< arrFunciones[i].getCveFuncion();
+                        // comparar numero de Peli para la funcion con numero de Peli para arreglo de Pelis
+                        for (int j = 0; j < 20; j++) {
+                            // cuando sean iguales desplegar titulo
+                            if(arrFunciones[i].getNumPeli() == arrPelis[j].getNumPeli()){
+                                cout << "\t Pelicula: " <<arrPelis[j].getTitulo();
+                            }
                         }
+                        // desplegar sala 
+                        cout << "\t Sala: " << arrFunciones[i].getSala() << "\t ";
+                        // desplegar hora
+                        cout << "Horario: "; 
+                        Hora horaDesplegar;
+                        horaDesplegar = arrFunciones[i].getHora();
+                        horaDesplegar.muestra();
                     }
-                    // desplegar sala 
-                    cout << "\t Sala: " << arrFunciones[i].getSala() << "\t ";
-                    // desplegar hora
-                    cout << "Horario: "; 
-                    Hora horaDesplegar;
-                    horaDesplegar = arrFunciones[i].getHora();
-                    horaDesplegar.muestra();
                 }
                 break;
             case 'D':
-                cout << "Introduzca la hora";
-                int horaCasoD, minCasoD;
-                pedirValidarHora(horaCasoD, minCasoD);
-                for(int i = 0; i < 20; i++) {
-                    // si la hora y los minutos son iguales mostrarlo todo
-                    if (horaCasoD == arrFunciones[i].getHora().getHh() && minCasoD == arrFunciones[i].getHora().getMm()) {
-                        arrFunciones[i].muestra();
+                {
+                    cout << "Introduzca la hora";
+                    int horaCasoD, minCasoD;
+                    pedirValidarHora(horaCasoD, minCasoD);
+                    for(int i = 0; i < numFunciones; i++) {
+                        // si la hora y los minutos son iguales mostrarlo todo
+                        if (horaCasoD == arrFunciones[i].getHora().getHh() && minCasoD == arrFunciones[i].getHora().getMm()) {
+                            // comparar numero de Peli para la funcion con numero de Peli para arreglo de Pelis
+                            for (int j = 0; j < 20; j++) {
+                                // cuando sean iguales desplegar titulo
+                                if(arrFunciones[i].getNumPeli() == arrPelis[j].getNumPeli()){
+                                    cout << "Pelicula: " <<arrPelis[j].getTitulo();
+                                }
+                            }
+                            cout << "\t Sala: " << arrFunciones[i].getSala() << endl;
+                        }
                     }
                 }
                 break;
             case 'E':
-                // code
+                { 
+                    // pedir clave de función 
+                    string inputClaveFun;
+                    int indexClaveEncontrada;
+                    cout << "Introduzca la clave de la funcion " << endl;
+                    cin >> inputClaveFun;
+                    // validar
+                    // recorrer el arreglo, si no lo encuentro en ningun elemento volver a pedir
+                    do {
+                        for(int i = 0; i < numFunciones; i++) {
+                            if(inputClaveFun != arrFunciones[i].getCveFuncion()) {
+                                indexClaveEncontrada = -1;
+                            }
+                            else {
+                                cout << "Entro al else " << endl;
+                                indexClaveEncontrada = i;
+                            }
+                        }
+                        if(indexClaveEncontrada == -1) {
+                            cout << "Error, clave inexistente. Introduzca una clave valida" << endl;
+                            cin.ignore();
+                            cin >> inputClaveFun;
+                        }
+                    }while(indexClaveEncontrada == -1);
+                    // desplegar conforme a la clave introducida usando el indice encontrado
+                    cout << "indice encontrado " << indexClaveEncontrada << endl;
+                    
+                }
                 break;
             case 'F':
                 // code
