@@ -271,7 +271,42 @@ int main(){
                 }
                 break;
             case 'F':
-                // code
+                {   
+                    int inputID, noDeIntentos = 0, indexFoundID, foundIDNumber;
+                    bool validID;
+                    // ciclo donde pido y valido el ID de actor
+                    do{
+                        if(noDeIntentos > 0) {
+                            cout << "Error, el ID introducido no existe. Introduzca un ID de actor valido " << endl;
+                        }
+                        else {
+                            cout << "Introduzca el no. de ID del actor que desea consultar. " << endl;
+                        }
+                        cin >> inputID;
+                        for(int i = 0; i < 20; i++) {
+                            if(arrActores[i].getId() != inputID) {
+                                validID = false;
+                            }
+                            else {
+                                foundIDNumber = arrActores[i].getId();
+                                indexFoundID = i;
+                                validID = true;
+                                break;
+                            }
+                        }
+                        noDeIntentos++;
+                    }while(!validID);
+                    // despliego la informacion de la consulta
+                    cout << "Participaciones de " << arrActores[indexFoundID].getNombre() << endl;
+                    for(int i = 0; i < 20; i++) {
+                        for(int j = 0; j < arrPelis[i].getCantActores(); j++) {
+                            if(arrPelis[i].getActorFromList(j).getId() == foundIDNumber) {
+                                cout << "Pelicula: " << arrPelis[i].getTitulo();
+                                cout << "\t Anio: " << arrPelis[i].getAnio() << endl;
+                            }
+                        }
+                    }
+                }
                 break;
             default:
                 cout << "La sesion ha terminado, gracias. " << endl;
