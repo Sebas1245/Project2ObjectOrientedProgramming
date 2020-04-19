@@ -200,10 +200,12 @@ int main(){
                 {
                     cout << "Introduzca la hora";
                     int horaCasoD, minCasoD;
+                    bool peliculaSeObtuvoPorHora;
                     pedirValidarHora(horaCasoD, minCasoD);
                     for(int i = 0; i < numFunciones; i++) {
                         // si la hora y los minutos son iguales mostrarlo todo
                         if (horaCasoD == arrFunciones[i].getHora().getHh() && minCasoD == arrFunciones[i].getHora().getMm()) {
+                            peliculaSeObtuvoPorHora = true;
                             // comparar numero de Peli para la funcion con numero de Peli para arreglo de Pelis
                             for (int j = 0; j < 20; j++) {
                                 // cuando sean iguales desplegar titulo
@@ -213,6 +215,13 @@ int main(){
                             }
                             cout << "\t Sala: " << arrFunciones[i].getSala() << endl;
                         }
+                        else {
+                            peliculaSeObtuvoPorHora = false;
+                        }
+                    }
+                    // si no se obtuvo una pelicula en la hora introducida mostrar feedback al usuario
+                    if(!peliculaSeObtuvoPorHora) {
+                        cout << "La hora introducida no concuerda con las horas de las peliculas que se presentaran hoy. " << endl;
                     }
                 }
                 break;
@@ -231,8 +240,8 @@ int main(){
                                 indexClaveEncontrada = -1;
                             }
                             else {
-                                cout << "Entro al else " << endl;
                                 indexClaveEncontrada = i;
+                                break;
                             }
                         }
                         if(indexClaveEncontrada == -1) {
@@ -241,9 +250,24 @@ int main(){
                             cin >> inputClaveFun;
                         }
                     }while(indexClaveEncontrada == -1);
+
                     // desplegar conforme a la clave introducida usando el indice encontrado
-                    cout << "indice encontrado " << indexClaveEncontrada << endl;
-                    
+                    cout << "Sala: " << arrFunciones[indexClaveEncontrada].getSala() << "\t Hora: ";
+                    arrFunciones[indexClaveEncontrada].getHora().muestra();
+                    for (int i = 0; i < 20; i++) {
+                        // cuando sean iguales desplegar la informacion de la pelicula
+                        if(arrFunciones[indexClaveEncontrada].getNumPeli() == arrPelis[i].getNumPeli()){
+                            cout << "Titulo: "<< arrPelis[i].getTitulo();
+                            cout << "\t Genero: " << arrPelis[i].getGenero();
+                            cout << "\t Duracion: "<< arrPelis[i].getDuracion()  << " minutos"<< endl;
+                            cout << "Reparto: ";
+                            // desplegamos la lista de actores
+                            for(int j = 0; j < arrPelis[i].getCantActores(); j++) {
+                                cout << arrPelis[i].getActorFromList(j).getNombre() << " ";
+                            }
+                        }
+                    }
+                    cout << endl;
                 }
                 break;
             case 'F':
