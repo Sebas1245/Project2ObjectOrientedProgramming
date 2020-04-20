@@ -90,6 +90,7 @@ bool Pelicula::agregarActor(Actor act) {
             return true;
         }
     }
+    return false;
 }
 
 void Pelicula::muestra() {
