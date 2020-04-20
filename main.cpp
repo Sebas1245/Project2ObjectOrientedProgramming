@@ -14,6 +14,7 @@ char menu(){
     char resp;
     bool respCorrecta;
     do {
+        cout << "----------------------------------------------------------------------------------------------" << endl;
         cout << "Eliga una opcion introduciendo una de las letras mostradas" << endl;
         cout << "A. Consultar actores en la lista " << endl;
         cout << "B. Consultar películas en la lista " << endl;
@@ -22,6 +23,7 @@ char menu(){
         cout << "E. Consultar por clave de funcion " << endl;
         cout << "F. Consultar participaciones de un actor en peliculas " << endl;
         cout << "G. Terminar " << endl;
+        cout << "----------------------------------------------------------------------------------------------" << endl;
         cin >> resp;
         resp = toupper(resp);
         if(resp == 'A' || resp == 'B' || resp == 'C' || resp == 'D' || resp == 'E' || resp =='F' || resp == 'G') {
