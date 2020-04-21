@@ -42,17 +42,42 @@ char menu(){
 // Regresa: hr y min como parametros por referencia
 void pedirValidarHora(int &hr, int &min) {
     int hora, minutos;
+    bool inputFail1 = false, inputFail2 = false;
     cout << "Hora (formato 24 hrs): "; 
     cin >> hora;
+    inputFail1 = cin.fail();
+    if(inputFail1) {
+        cout << "Error, no se introdujo un numero " << endl;
+        cin.clear();
+        cin.ignore(10,'\n');
+    }
     cout << "Minuto: ";
     cin >> minutos;
+    inputFail2 = cin.fail();
+    if(inputFail2) {
+        cout << "No se introdujo un numero, intentelo de nuevo" << endl;
+        cin.clear();
+        cin.ignore(10,'\n');
+    }
     // valido que el formato de hora sea correcto
-    while(hora >= 24 || hora < 0 || minutos < 0 || minutos > 59) {
+    while(hora >= 24 || hora < 0 || minutos < 0 || minutos > 59 || inputFail1 || inputFail2) {
         cout << "Se ha introducido la hora erroneamente, intentelo de nuevo. Recuerde que se debe introducir en formato de 24 horas" << endl;
         cout << "Hora (formato 24 hrs): "; 
         cin >> hora;
+        inputFail1 = cin.fail();
+        if(inputFail1) {
+            cout << "Error, no se introdujo un numero " << endl;
+            cin.clear();
+            cin.ignore(10,'\n');
+        }
         cout << "Minuto: ";
         cin >> minutos;
+        inputFail2 = cin.fail();
+        if(inputFail2) {
+            cout << "No se introdujo un numero, intentelo de nuevo" << endl;
+            cin.clear();
+            cin.ignore(10,'\n');
+        }
     }
     hr = hora;
     min = minutos;
@@ -130,9 +155,28 @@ int main(){
     for (int i = 0; i < numFunciones; i++) {
         cout << "Introduzca la clave de funcion "; 
         cin >> cveFun;
-        cin.ignore();
-        cout << "Introduzca el numero de pelicula ";
-        cin >> numPeliFun;
+        // pedir el num de pelicula y validar que exista en el arreglo
+        bool numPeliValido;
+        int intentos = 0;
+        do{
+            if(intentos == 0) {
+                cout << "Introduzca el numero de Pelicula ";
+            }
+            else {
+                cout << "Error, el numero de pelicula ingresado no existe en el sistema. Ingrese un numero valido. ";
+            }
+            cin >> numPeliFun;
+            for(int j = 0; j < 20; j++) {
+                if(numPeliFun == arrPelis[j].getNumPeli()) {
+                    numPeliValido = true;
+                    break;
+                }
+                else {
+                    numPeliValido = false;
+                }
+            }
+            intentos++;
+        }while(!numPeliValido);
         cout << "Introduzca el horario en el que se presentara la pelicula" << endl;
         pedirValidarHora(hora,minutos);
         cout << "Introduzca la sala donde se presentara la pelicula ";
