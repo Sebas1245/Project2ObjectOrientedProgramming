@@ -246,7 +246,7 @@ int main(){
                 {
                     cout << "Introduzca la hora";
                     int horaCasoD, minCasoD;
-                    bool peliculaSeObtuvoPorHora;
+                    bool peliculaSeObtuvoPorHora = false;
                     pedirValidarHora(horaCasoD, minCasoD);
                     for(int i = 0; i < numFunciones; i++) {
                         // si la hora y los minutos son iguales mostrarlo todo
@@ -260,9 +260,6 @@ int main(){
                                 }
                             }
                             cout << "\t Sala: " << arrFunciones[i].getSala() << endl;
-                        }
-                        else {
-                            peliculaSeObtuvoPorHora = false;
                         }
                     }
                     // si no se obtuvo una pelicula en la hora introducida mostrar feedback al usuario
