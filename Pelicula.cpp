@@ -76,7 +76,7 @@ bool Pelicula::agregarActor(Actor act) {
             return false;
         }
         // si el ultimo espacio del arreglo está ocupado
-        else if (i == 9 &&  listaActores[i].getNombre() != " ") {
+        else if (i == 9 &&  listaActores[i].getNombre() != "N/D") {
             return false;
         }
     }
